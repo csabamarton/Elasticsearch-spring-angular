@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { CreateUserRequest } from '../../models/create-user-request.model';
 import {UserResponse} from "../../models/user-response.model";
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -30,6 +31,8 @@ export class UserFormComponent implements OnInit {
   }
 
   saveUser() {
+    console.log("SaveUser Method was called")
+
     if (this.userForm.invalid) {
       return;
     }
