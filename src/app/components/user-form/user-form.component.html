@@ -1,21 +1,24 @@
-<form [formGroup]="userForm" (ngSubmit)="saveUser()" class="user-form">
+<form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="saveUser()" class="user-form">
   <div class="form-field">
     <mat-form-field appearance="fill">
       <mat-label>First Name:</mat-label>
       <input matInput type="text" id="firstName" formControlName="firstName" required>
     </mat-form-field>
+    <mat-error *ngIf="submitted && userForm && userForm.get('firstName').invalid">First Name is required</mat-error>
   </div>
   <div class="form-field">
     <mat-form-field appearance="fill">
       <mat-label>Last Name:</mat-label>
       <input matInput type="text" id="lastName" formControlName="lastName" required>
     </mat-form-field>
+    <mat-error *ngIf="submitted && userForm && userForm.get('lastName').invalid">Last Name is required</mat-error>
   </div>
   <div class="form-field">
     <mat-form-field appearance="fill">
       <mat-label>Email:</mat-label>
       <input matInput type="email" id="email" formControlName="email" required>
     </mat-form-field>
+    <mat-error *ngIf="submitted && userForm && userForm.get('email').invalid">Please enter a valid email</mat-error>
   </div>
   <button mat-raised-button color="primary" type="submit">Save</button>
 </form>
